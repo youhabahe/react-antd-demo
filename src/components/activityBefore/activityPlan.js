@@ -1,7 +1,7 @@
 import React from 'react'
 import {Table, Icon} from 'antd'
 
-export default class myTable extends React.Component {
+export default class activityPlan extends React.Component {
     constructor(props) {
         super(props)
         this.state = {

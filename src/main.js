@@ -23,12 +23,16 @@ import 'font-awesome/css/font-awesome.min.css'
 import './main.css'
 
 // 引入单个页面（包括嵌套的子页面）
-import myTable from './components/table.js'
-import myForm from './components/form.js'
-import myChart from './components/chart.js'
-import myAnimate from './components/animate.js'
-import myCalendar from './components/calendar.js'
-import myCard from './components/fetch.js'
+import activityAdd from './components/activityBefore/activityNew.js'
+import activityNotice from './components/activityBefore/activityNotice.js'
+import activityPlan from './components/activityBefore/activityPlan.js'
+import activityAudit from './components/activityBefore/activityAudit.js'
+import activityPlan from './components/activityAfter/activityArchive.js'
+import activityAudit from './components/activityAfter/activityStatistics.js'
+import activityAudit from './components/activityDuring/activityMonitor.js'
+import activityArchive from "./components/activityAfter/activityArchive";
+import activityStatistics from "./components/activityAfter/activityStatistics";
+import activityMonitor from "./components/activityDuring/activityMonitor";
 
 const ACTIVE = { color: 'red' }
 
@@ -70,15 +74,18 @@ class Sider extends React.Component {
                         defaultSelectedKeys={[this.state.current]}
                         mode="inline"
                     >
-                        <SubMenu key="sub1" title={<span><Icon type="mail" /><span>导航一</span></span>}>
-                            <Menu.Item key="1"><Link to="/myTable">表格</Link></Menu.Item>
-                            <Menu.Item key="2"><Link to="/myForm">表单</Link></Menu.Item>
-                            <Menu.Item key="3"><Link to="/myChart">图表</Link></Menu.Item>
-                            <Menu.Item key="4"><Link to="/myCalendar">日历</Link></Menu.Item>
+                        <SubMenu key="sub1" title={<span><Icon type="appstore" /><span>活动事前</span></span>}>
+                            <Menu.Item key="1"><Link to="/activityNotice">活动通知</Link></Menu.Item>
+                            <Menu.Item key="2"><Link to="/activityAdd">活动新建</Link></Menu.Item>
+                            <Menu.Item key="3"><Link to="/activityPlan">活动预案</Link></Menu.Item>
+                            <Menu.Item key="4"><Link to="/activityAudit">活动审核</Link></Menu.Item>
                         </SubMenu>
-                        <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>导航二</span></span>}>
-                            <Menu.Item key="5"><Link to="/myCard">导航</Link></Menu.Item>
-                            <Menu.Item key="6"><Link to="/myAnimate">关注</Link></Menu.Item>
+                        <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>活动事中</span></span>}>
+                            <Menu.Item key="5"><Link to="/activityMonitor">指挥监控</Link></Menu.Item>
+                        </SubMenu>
+                        <SubMenu key="sub3" title={<span><Icon type="appstore" /><span>活动事后</span></span>}>
+                            <Menu.Item key="5"><Link to="/activityArchive">活动归档</Link></Menu.Item>
+                            <Menu.Item key="6"><Link to="/activityStatistics">统计查询</Link></Menu.Item>
                         </SubMenu>
                     </Menu>
                 </div>
@@ -102,15 +109,16 @@ class Sider extends React.Component {
 render((
     <Router history={hashHistory} >
         <Route path="/" component={Sider}>
-            <IndexRoute path="myCard" component={myCard} />
-            <Route path="myTable" component={myTable} />
-            <Route path="myForm" component={myForm} />
-            <Route path="myChart" component={myChart} />
-            <Route path="myCalendar" component={myCalendar} />
-            <Route path="myAnimate" component={myAnimate} />
-            <Route path="myCard" component={myCard} />
+            {/*<IndexRoute component={myCard} />*/}
+            <Route path="activityAdd" component={activityAdd} />
+            <Route path="activityAudit" component={activityAudit} />
+            <Route path="activityNotice" component={activityNotice} />
+            <Route path="activityPlan" component={activityPlan} />
+            <Route path="activityArchive" component={activityArchive} />
+            <Route path="activityStatistics" component={activityStatistics} />
+            <Route path="activityMonitor" component={activityMonitor} />
         </Route>
     </Router>
-), document.getElementById('app'));
+), document.getElementById('imactivity'));
 
 
